@@ -1,0 +1,99 @@
+select * from febeca.articulo 
+
+-- 1
+select nombre, zona from febeca.cliente 
+
+-- 2 
+
+select nombre, saldo from febeca.cliente where saldo > 500
+
+--3
+
+select * from febeca.articulo where descripcion like '%Prueba%'
+
+-- 4
+
+select * from febeca.articulo order by precio_base_local desc
+
+-- 5
+select distinct bodega from febeca.existencia_bodega  
+
+-- 6
+select count(zona) from febeca.cliente group by zona
+-- como aqui puedo mostrar datos como nombres etc? DUDA 
+
+--7
+
+select * from febeca.articulo 
+
+select articulo, SUM(cant_disponible) 
+from febeca.existencia_bodega 
+group by articulo
+having SUM(cant_disponible) > 500
+
+-- 8
+select descripcion, AVG(precio_base_local ) as promedio from febeca.articulo where activo = 'S'
+group by descripcion
+order by promedio desc 
+
+-- 9
+
+select a.articulo , AVG(a.precio_base_local ) from febeca.articulo a  where a.activo = 'S'
+group by a.articulo 
+
+-- 10 
+
+select 
+MAX(precio_base_local) as precio_maximo,
+MIN(precio_base_local) as precio_minimo
+from febeca.articulo
+
+-- 11
+
+select c.nombre as nombre_cliente, v.nombre as nombre_vendedor
+from febeca.cliente_vendedor cv
+inner join febeca.cliente c on cv.cliente = c.cliente 
+inner join febeca.vendedor v on cv.vendedor = v.vendedor 
+
+-- 12
+
+select ar.articulo, ar.descripcion, ex.cant_disponible 
+from febeca.articulo ar
+inner join febeca.existencia_bodega ex
+on ar.articulo = ex.articulo
+where ex.bodega = 'BO07'
+order by ex.cant_disponible desc
+
+-- 13
+
+select v.nombre 
+from febeca.vendedor v 
+left join febeca.cliente_vendedor cv 
+on v.vendedor = cv.vendedor
+where cv.vendedor is null
+
+-- necesite ayuda para esta 
+
+-- 14
+
+select v.nombre, SUM(c.saldo) as saldo_total
+from febeca.vendedor v 
+left join febeca.cliente_vendedor cv on v.vendedor  = cv.vendedor 
+left join febeca.cliente c on cv.cliente = c.cliente
+group by v.nombre
+
+-- 15
+
+select * 
+from febeca.articulo a 
+left join febeca.existencia_bodega eb on a.articulo = eb.articulo 
+where eb is null
+
+select * from febeca.articulo as a
+where a.articulo not in(select articulo from febeca.existencia_bodega)
+
+delete from febeca.existencia_bodega  where articulo = '03-42-035'
+
+alter table febeca.cliente add column "password" varchar(50)
+
+update febeca.cliente set password = '12345'

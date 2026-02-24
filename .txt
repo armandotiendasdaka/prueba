@@ -1,0 +1,7 @@
+Realizar consultas en base a la data que te dan
+
+JOINS, SUM , todos los posibles aprender sentencias etc 
+
+
+En el frontend realizar un login con inicio de sesion
+mostrar la data de los articulos 
