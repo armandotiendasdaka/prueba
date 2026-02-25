@@ -1,17 +1,17 @@
 import { Cliente } from "src/cliente/entities/cliente.entity";
 import { Column, Entity, ManyToMany, PrimaryColumn } from "typeorm";
 
-@Entity({ name: 'VENDEDOR' })
+@Entity({ name: 'vendedor', schema: 'febeca' })
 export class Vendedor {
 
     @PrimaryColumn({ type: 'varchar', length: 10 })
-    VENDEDOR: string
+    vendedor: string
 
     @Column({ type: 'char', length: 1, default: "S", nullable: true })
-    ACTIVO: string
+    activo: string
 
     @Column({ type: 'varchar', length: 100 })
-    NOMBRE: string
+    nombre: string
 
     @ManyToMany(() => Cliente, (cliente) => cliente.vendedores)
     clientes: Cliente[]

@@ -1,19 +1,18 @@
 import { Articulo } from "src/articulo/entities/articulo.entity";
 import { Entity, Column, PrimaryColumn, ManyToOne, JoinColumn } from "typeorm";
 
-@Entity({ name: 'EXISTENCIA_BODEGA' })
+@Entity({ name: 'existencia_bodega', schema: 'febeca' })
 export class ExistenciaBodega {
 
     @PrimaryColumn({ type: 'varchar', length: 20 })
-    ARTICULO: string;
+    @ManyToOne(() => Articulo, (articulo) => articulo.existencias)
+    @JoinColumn({ name: 'articulo' })
+    articulo: Articulo;
 
     @PrimaryColumn({ type: 'varchar', length: 10 })
-    BODEGA: string;
+    bodega: string;
 
     @Column({ type: 'decimal', precision: 28, scale: 8 })
-    CANT_DISPONIBLE: number;
+    cant_disponible: number;
 
-    @ManyToOne(() => Articulo)
-    @JoinColumn({ name: 'ARTICULO' })
-    articulo: Articulo;
 }

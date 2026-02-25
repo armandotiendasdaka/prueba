@@ -1,29 +1,32 @@
 import { Column, Entity, JoinTable, ManyToMany, PrimaryColumn } from "typeorm";
 import { Vendedor } from "src/vendedor/entities/vendedor.entity";
 
-@Entity({ name: 'CLIENTE' })
+@Entity({ name: 'cliente', schema: 'febeca' })
 export class Cliente {
 
     @PrimaryColumn({ type: 'varchar', length: 20 })
-    CLIENTE: string
+    cliente: string
 
     @Column({ type: 'varchar', length: 100 })
-    NOMBRE: string
+    nombre: string
 
     @Column({ type: 'text', nullable: true })
-    DIRECCION: string
+    direccion: string
 
     @Column({ type: 'decimal', precision: 28, scale: 8, nullable: true })
-    SALDO: number
+    saldo: number
 
     @Column({ type: 'varchar', length: 20, nullable: true })
-    ZONA: string
+    zona: string
+
+    @Column({ type: 'varchar' })
+    password: string
 
     @ManyToMany(() => Vendedor, (vendedor) => vendedor.clientes)
     @JoinTable({
         name: 'CLIENTE_VENDEDOR',
-        joinColumn: { name: 'CLIENTE', referencedColumnName: 'CLIENTE' },
-        inverseJoinColumn: { name: 'VENDEDOR', referencedColumnName: 'VENDEDOR' },
+        joinColumn: { name: 'cliente', referencedColumnName: 'cliente' },
+        inverseJoinColumn: { name: 'vendedor', referencedColumnName: 'vendedor' },
     })
     vendedores: Vendedor[]
 }

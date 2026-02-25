@@ -5,7 +5,7 @@ import { UpdateArticuloDto } from './dto/update-articulo.dto';
 
 @Controller('articulo')
 export class ArticuloController {
-  constructor(private readonly articuloService: ArticuloService) {}
+  constructor(private readonly articuloService: ArticuloService) { }
 
   @Post()
   create(@Body() createArticuloDto: CreateArticuloDto) {
@@ -15,6 +15,11 @@ export class ArticuloController {
   @Get()
   findAll() {
     return this.articuloService.findAll();
+  }
+
+  @Get('value')
+  findAllValue() {
+    return this.articuloService.findAllValue();
   }
 
   @Get(':id')
