@@ -1,0 +1,13 @@
+19. Genere una alerta de stock bajo: liste los artículos y las bodegas donde la cantidad disponible sea inferior a 200 unidades.
+
+20. Calcule el saldo promedio de los clientes agrupados por zona, pero solo para aquellas zonas donde el saldo promedio sea superior a $500.
+
+21. Identifique los artículos que tienen presencia en más de una bodega simultáneamente.
+
+22. Muestre el "Top 3" de clientes con mayor saldo adeudado, incluyendo el nombre de su vendedor.
+
+23. Genere un reporte consolidado: Nombre del Cliente, Zona, Nombre del Vendedor y el Saldo del Cliente. Ordene el resultado por zona de forma ascendente.
+
+24. Liste los nombres de los clientes cuyo saldo individual es estrictamente superior al promedio de saldos de todos los clientes de la empresa.
+
+25. Resumen Ejecutivo de Ventas: Muestre el código del vendedor, su nombre y la cantidad de clientes que tiene asignados. Solo incluya en el reporte a los vendedores que gestionen 2 o más clientes.
