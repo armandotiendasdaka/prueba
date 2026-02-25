@@ -28,6 +28,7 @@ export class AppService {
       return {
         success: true,
         message: 'Cliente encontrado',
+        token: Math.random().toString(36).substring(2)
       };
     } catch (error) {
       console.log(error);
