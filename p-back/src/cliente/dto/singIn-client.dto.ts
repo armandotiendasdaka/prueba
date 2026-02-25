@@ -3,7 +3,7 @@ import { IsString } from 'class-validator';
 export class SingInClienteDto {
 
     @IsString()
-    cliente: string;
+    client: string;
 
     @IsString()
     password: string;

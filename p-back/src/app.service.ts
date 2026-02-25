@@ -15,7 +15,7 @@ export class AppService {
   async signIn(signInDto: SingInClienteDto) {
 
     try {
-      const cliente = await this.clienteRepository.findOneBy({ cliente: signInDto.cliente });
+      const cliente = await this.clienteRepository.findOneBy({ cliente: signInDto.client });
 
       if (!cliente || cliente.password !== signInDto.password) {
 
